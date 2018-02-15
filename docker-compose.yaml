@@ -1,0 +1,63 @@
+version: '2'
+
+services:
+  # basic
+  basic-jupyter:
+    build:
+      context: basic/docker/jupyter
+      dockerfile: Dockerfile
+    ports:
+      - "10000:8888"
+    volumes:
+      - ./basic:/notebook
+
+  # elastic
+  elastic-jupyter:
+    build:
+      context: elastic/docker/jupyter
+      dockerfile: Dockerfile
+    ports:
+      - "10001:8888"
+    volumes:
+      - ./elastic:/notebook
+
+  elasticsearch:
+      build:
+        context: elastic/docker/elasticsearch
+        dockerfile: Dockerfile
+      ports:
+        - "9200:9200"
+
+  kibana:
+      build:
+        context: elastic/docker/kibana
+        dockerfile: Dockerfile
+      ports:
+        - "5601:5601"
+
+  # mongo
+  mongo-jupyter:
+    build:
+      context: mongo/docker/jupyter
+      dockerfile: Dockerfile
+    ports:
+      - "10002:8888"
+    volumes:
+      - ./mongo:/notebook
+
+  mongo:
+    build:
+      context: mongo/docker/mongo
+      dockerfile: Dockerfile
+    ports:
+      - "27017:27017"
+
+  # nodejs
+  nodejs-jupyter:
+    build:
+      context: nodejs/docker/jupyter
+      dockerfile: Dockerfile
+    ports:
+      - "10003:8888"
+    volumes:
+      - ./nodejs:/notebook

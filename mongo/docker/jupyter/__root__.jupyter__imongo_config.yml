@@ -1,0 +1,6 @@
+host: mongo
+#port: 27017
+#username: username
+#password: password
+#authenticationDatabase: admin
+#quiet: null
