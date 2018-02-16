@@ -61,3 +61,13 @@ services:
       - "10003:8888"
     volumes:
       - ./nodejs:/notebook
+
+  # html
+  html-jupyter:
+    build:
+      context: html/docker/jupyter
+      dockerfile: Dockerfile
+    ports:
+      - "10004:8888"
+    volumes:
+      - ./html:/notebook
